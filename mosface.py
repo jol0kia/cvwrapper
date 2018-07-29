@@ -11,12 +11,15 @@ DETREC_THICKNESS = 8
 
 print("[info]  processing ... ({0})".format(__file__))
 
-if len(sys.argv) <= 1:
+if len(sys.argv) == 2:
+    path_src = sys.argv[1]
+    path_dst = re.sub(r'\.jpg$|\.jpeg$|\.png$|\.PNG$', '-mos.jpg', path_src)
+elif len(sys.argv) == 3:
+    path_src = sys.argv[1]
+    path_dst = sys.argv[2]
+else:
     print("[error] invalid argument!")
     quit()
-
-path_src = sys.argv[1]
-path_dst = re.sub(r'\.jpg$|\.jpeg$|\.png$|\.PNG$', '-mos.jpg', path_src)
 
 if path_src == path_dst:
     print("[error] invalid argument!")
